@@ -706,7 +706,7 @@ export default function RegisterStartupPage() {
             </Flex>
             <Flex gap="2" mt="1" wrap="wrap">
               {extracted.tags.map((tag) => (
-                <Badge key={tag} variant="outline" color="gray" size="2">
+                <Badge key={tag} variant="soft" color="gray" radius="full" size="2">
                   {tag}
                 </Badge>
               ))}

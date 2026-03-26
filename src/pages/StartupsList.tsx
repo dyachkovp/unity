@@ -166,8 +166,9 @@ export default function StartupsList({
                     {startup.tags.map((tag) => (
                       <Badge
                         key={tag}
-                        variant="outline"
+                        variant="soft"
                         color="gray"
+                        radius="full"
                         size={compact ? "1" : "2"}
                       >
                         {tag}

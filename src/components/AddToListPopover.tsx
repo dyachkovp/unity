@@ -46,7 +46,7 @@ export default function AddToListPopover({
           <IconButton
             variant="ghost"
             size={size}
-            color={isInAnyList ? "indigo" : "gray"}
+            color={isInAnyList ? undefined : "gray"}
             className="add-to-list-trigger"
             onClick={(e) => e.stopPropagation()}
             title="Добавить в список"

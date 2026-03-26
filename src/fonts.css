@@ -1,0 +1,173 @@
+/* ── SB Sans Display ── */
+@font-face {
+  font-family: 'SB Sans Display';
+  src: url('/fonts/SBSansDisplay-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Display';
+  src: url('/fonts/SBSansDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Display';
+  src: url('/fonts/SBSansDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Display';
+  src: url('/fonts/SBSansDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Display';
+  src: url('/fonts/SBSansDisplay-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Display';
+  src: url('/fonts/SBSansDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── SB Sans Text ── */
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SB Sans Text';
+  src: url('/fonts/SBSansText-Heavy.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Override Radix UI Themes default font ── */
+/* ── Override Radix accent color: rgb(171, 66, 120) ── */
+.radix-themes {
+  --default-font-family: 'SB Sans Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --heading-font-family: 'SB Sans Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --accent-1: #fdf2f8;
+  --accent-2: #fce7f3;
+  --accent-3: #f9c6e0;
+  --accent-4: #f3a1cc;
+  --accent-5: #ec7db8;
+  --accent-6: #d95ca0;
+  --accent-7: #c44d8a;
+  --accent-8: #ab4278;
+  --accent-9: #ab4278;
+  --accent-10: #963a6a;
+  --accent-11: #7e2f58;
+  --accent-12: #4a1533;
+
+  --accent-a1: rgba(171, 66, 120, 0.02);
+  --accent-a2: rgba(171, 66, 120, 0.06);
+  --accent-a3: rgba(171, 66, 120, 0.12);
+  --accent-a4: rgba(171, 66, 120, 0.2);
+  --accent-a5: rgba(171, 66, 120, 0.3);
+  --accent-a6: rgba(171, 66, 120, 0.4);
+  --accent-a7: rgba(171, 66, 120, 0.54);
+  --accent-a8: rgba(171, 66, 120, 0.72);
+  --accent-a9: rgba(171, 66, 120, 1);
+  --accent-a10: rgba(150, 58, 106, 1);
+  --accent-a11: rgba(126, 47, 88, 1);
+  --accent-a12: rgba(74, 21, 51, 0.95);
+
+  --accent-contrast: #fff;
+  --accent-surface: rgba(171, 66, 120, 0.06);
+  --accent-indicator: #ab4278;
+  --accent-track: #ab4278;
+}
+
+h1, h2, h3, h4, h5, h6,
+.radix-themes [class*="rt-Heading"] {
+  font-family: var(--heading-font-family) !important;
+}
+
+/* Ensure all native elements inherit the custom font */
+.radix-themes button,
+.radix-themes input,
+.radix-themes select,
+.radix-themes textarea {
+  font-family: inherit;
+}

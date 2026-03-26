@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { Button, DropdownMenu, IconButton } from "@radix-ui/themes";
 import {
@@ -44,6 +44,20 @@ export default function Layout() {
   const hasSelection = searchParams.has("selected");
   const effectiveCollapsed = userCollapsed || hasSelection;
 
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      "/": "SB Unity — Стартапы",
+      "/lists": "SB Unity — Мои списки",
+      "/scouting": "SB Unity — Скаутинг",
+      "/investments": "SB Unity — Инвестиции",
+      "/clubs": "SB Unity — Клубы инвесторов",
+      "/investors": "SB Unity — Инвесторы",
+      "/corporations": "SB Unity — Корпорации",
+      "/register-startup": "SB Unity — Регистрация стартапа",
+    };
+    document.title = titles[location.pathname] || "SB Unity";
+  }, [location.pathname]);
+
   const isActive = (id: string) => {
     if (id === "startups") return location.pathname === "/" || location.pathname.startsWith("/startup");
     if (id === "lists") return location.pathname.startsWith("/lists");
@@ -60,25 +74,12 @@ export default function Layout() {
             style={{ cursor: "pointer" }}
             onClick={() => navigate("/")}
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="12" fill="#21a038" />
-              <path
-                d="M7 12.5C7 9.5 9.5 7 12.5 7C14.5 7 16.2 8.1 17 9.7"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-              <path
-                d="M17 11.5C17 14.5 14.5 17 11.5 17C9.5 17 7.8 15.9 7 14.3"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span>
-              <span className="logo-sber">SBER</span>{" "}
-              <span className="logo-unity">UNITY</span>
-            </span>
+            <img
+              src="/unity-logo.svg"
+              alt="Sber Unity"
+              height={20}
+              className="sidebar-logo-img"
+            />
           </div>
           <IconButton
             variant="ghost"

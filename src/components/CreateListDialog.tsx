@@ -16,12 +16,16 @@ export default function CreateListDialog({
   onCreated,
   initialStartupId,
 }: CreateListDialogProps) {
-  const { createList, addStartupToList } = useLists();
+  const { lists, createList, addStartupToList } = useLists();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
+  const nameExists = lists.some(
+    (l) => l.name.toLowerCase() === name.trim().toLowerCase()
+  );
+
   const handleCreate = () => {
-    if (!name.trim()) return;
+    if (!name.trim() || nameExists) return;
     const newList = createList(name.trim(), description.trim() || undefined);
     if (initialStartupId) {
       addStartupToList(newList.id, initialStartupId);
@@ -50,10 +54,16 @@ export default function CreateListDialog({
               value={name}
               onChange={(e) => setName(e.target.value)}
               autoFocus
+              color={nameExists ? "red" : undefined}
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleCreate();
               }}
             />
+            {nameExists && (
+              <Text size="1" color="red" mt="1" as="p">
+                Список с таким названием уже существует
+              </Text>
+            )}
           </label>
 
           <label>
@@ -75,7 +85,7 @@ export default function CreateListDialog({
               Отмена
             </Button>
           </Dialog.Close>
-          <Button onClick={handleCreate} disabled={!name.trim()}>
+          <Button onClick={handleCreate} disabled={!name.trim() || nameExists}>
             Создать
           </Button>
         </Flex>

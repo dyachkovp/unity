@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Badge, Button, Flex, Heading, Text } from "@radix-ui/themes";
 import { Cross1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { useLists } from "../context/ListsContext";
@@ -22,13 +23,24 @@ export default function ListContentPanel({
 }: ListContentPanelProps) {
   const { deleteList, removeStartupFromList } = useLists();
   const { startups: allStartups } = useStartups();
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const listStartups = list.startupIds
     .map((id) => allStartups.find((s) => s.id === id))
     .filter(Boolean);
 
   const handleDelete = () => {
+    if (listStartups.length > 0) {
+      setConfirmDelete(true);
+    } else {
+      deleteList(list.id);
+      onClose();
+    }
+  };
+
+  const handleConfirmDelete = () => {
     deleteList(list.id);
+    setConfirmDelete(false);
     onClose();
   };
 
@@ -117,6 +129,42 @@ export default function ListContentPanel({
           </div>
         )}
       </div>
+
+      {/* Delete confirmation modal */}
+      {confirmDelete && (
+        <div className="confirm-overlay" onClick={() => setConfirmDelete(false)}>
+          <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
+            <Heading size="4" mb="2">Удалить список?</Heading>
+            <Text size="2" color="gray" as="p" mb="4">
+              В списке «{list.name}» {listStartups.length}{" "}
+              {listStartups.length === 1
+                ? "стартап"
+                : listStartups.length < 5
+                  ? "стартапа"
+                  : "стартапов"}. Список будет удалён, но сами стартапы останутся на платформе.
+            </Text>
+            <Flex gap="3" justify="end">
+              <Button
+                variant="soft"
+                color="gray"
+                size="2"
+                style={{ cursor: "pointer" }}
+                onClick={() => setConfirmDelete(false)}
+              >
+                Отмена
+              </Button>
+              <Button
+                color="red"
+                size="2"
+                style={{ cursor: "pointer" }}
+                onClick={handleConfirmDelete}
+              >
+                <TrashIcon /> Удалить
+              </Button>
+            </Flex>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

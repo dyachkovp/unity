@@ -19,6 +19,7 @@ interface ListsContextValue {
   addStartupToList: (listId: string, startupId: number) => void;
   removeStartupFromList: (listId: string, startupId: number) => void;
   getListsForStartup: (startupId: number) => StartupList[];
+  reorderList: (fromIndex: number, toIndex: number) => void;
 }
 
 const ListsContext = createContext<ListsContextValue | null>(null);
@@ -72,6 +73,18 @@ export function ListsProvider({ children }: { children: ReactNode }) {
     []
   );
 
+  const reorderList = useCallback(
+    (fromIndex: number, toIndex: number) => {
+      setLists((prev) => {
+        const updated = [...prev];
+        const [moved] = updated.splice(fromIndex, 1);
+        updated.splice(toIndex, 0, moved);
+        return updated;
+      });
+    },
+    []
+  );
+
   const getListsForStartup = useCallback(
     (startupId: number): StartupList[] => {
       return lists.filter((l) => l.startupIds.includes(startupId));
@@ -88,6 +101,7 @@ export function ListsProvider({ children }: { children: ReactNode }) {
         addStartupToList,
         removeStartupFromList,
         getListsForStartup,
+        reorderList,
       }}
     >
       {children}

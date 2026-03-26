@@ -120,7 +120,13 @@ function BulkAddToList({ startupIds }: { startupIds: number[] }) {
           </div>
         )}
       </div>
-      <CreateListDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+      <CreateListDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        onCreated={(newList) => {
+          startupIds.forEach((id) => addStartupToList(newList.id, id));
+        }}
+      />
     </>
   );
 }
@@ -363,8 +369,9 @@ export default function ScoutingPage() {
                   {r.startup.tags.map((tag) => (
                     <Badge
                       key={tag}
-                      variant="outline"
+                      variant="soft"
                       color="gray"
+                      radius="full"
                       size={isDetailOpen ? "1" : "2"}
                     >
                       {tag}
